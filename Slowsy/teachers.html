@@ -1,0 +1,158 @@
+<html>
+	<head>
+		<title>For Teachers</title>
+	</head>
+	<body>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+		<img id="imagePreview" style="height: 300px;" />
+		<input id="imageUpload" type="file" />
+        <label class="name_s" for="">Enter Name of Student <input id="userInput" type="text"><button class="confirm" onclick="addName()">Confirm</button></label>
+        
+        <h1 class="d-title">Drowsiness Detector & Data</h1>
+        <script>
+
+            function addName() {
+                var input = document.getElementById("userInput").value;
+                alert(input);
+            }
+        </script>
+		<div id="label-container"></div>
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+		<script type="text/javascript">
+			// More API functions here:
+			// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+			// the link to your model provided by Teachable Machine export panel
+			const URL = 'https://teachablemachine.withgoogle.com/models/52O721nA5/';
+
+			let model, labelContainer, maxPredictions;
+
+			// Load the image model 
+			async function init() {
+				const modelURL = URL + 'model.json';
+				const metadataURL = URL + 'metadata.json';
+
+				// load the model and metadata
+				model = await tmImage.load(modelURL, metadataURL);
+				maxPredictions = model.getTotalClasses();
+
+				labelContainer = document.getElementById('label-container');
+				for (let i = 0; i < maxPredictions; i++) {
+					// and class labels
+					labelContainer.appendChild(document.createElement('div'));
+				}
+			}
+
+			async function predict() {
+				// predict can take in an image, video or canvas html element
+				var image = document.getElementById('imagePreview');
+				const prediction = await model.predict(image, false);
+				for (let i = 0; i < maxPredictions; i++) {
+					const classPrediction =
+						prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
+					labelContainer.childNodes[i].innerHTML = classPrediction;
+				}
+			}
+		</script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						$('#imagePreview').attr('src', e.target.result);
+						// $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+						$('#imagePreview').hide();
+						$('#imagePreview').fadeIn(650);
+					};
+					reader.readAsDataURL(input.files[0]);
+					init().then(() => {
+						predict();
+					});
+				}
+			}
+			$('#imageUpload').change(function () {
+				readURL(this);
+			});
+		</script>
+
+		<div class="container">
+			<table class="_table">
+			  <thead>
+				<tr>
+				  <th>Name of Student</th>
+				  <th>Drowsiness</th>
+				  <th>Contact</th>
+				  <th width="50px">
+					<div class="action_container">
+					  <button class="success" onclick="create_tr('table_body')">
+						Add
+						<i class="fa fa-plus"></i>
+					  </button>
+					</div>
+				  </th>
+				</tr>
+			  </thead>
+			  <tbody id="table_body">
+				<tr>
+				  <td>
+					<input type="text" class="form_control" placeholder="John Doe">
+				  </td>
+				  <td>
+					<input type="text" class="form_control" placeholder="Drowsy: Yes or No">
+				  </td>
+				  <td>
+					<textarea class="form_control" placeholder="Parent Contact Details"></textarea>
+				  </td>
+				  <td>
+					<div class="action_container">
+					  <button class="danger" onclick="remove_tr(this)">
+						<i class="fa fa-close"></i>
+						Remove
+					  </button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+
+		  <script>
+			  function create_tr(table_id) {
+    let table_body = document.getElementById(table_id),
+        first_tr   = table_body.firstElementChild
+        tr_clone   = first_tr.cloneNode(true);
+
+    table_body.append(tr_clone);
+
+    clean_first_tr(table_body.firstElementChild);
+}
+
+function clean_first_tr(firstTr) {
+    let children = firstTr.children;
+    
+    children = Array.isArray(children) ? children : Object.values(children);
+    children.forEach(x=>{
+        if(x !== firstTr.lastElementChild)
+        {
+            x.firstElementChild.value = '';
+        }
+    });
+}
+
+
+
+function remove_tr(This) {
+    if(This.closest('tbody').childElementCount == 1)
+    {
+        alert("You Don't have Permission to Delete This ?");
+    }else{
+        This.closest('tr').remove();
+    }
+}
+		  </script>
+	</body>
+</html>

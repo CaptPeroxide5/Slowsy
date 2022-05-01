@@ -1,0 +1,231 @@
+.logo{
+    height: 100px;
+    margin-left: 1rem;
+    margin-top: 0.7rem;
+}
+
+ul, li, a{
+    text-decoration: none;
+    list-style: none;
+    display: flex; 
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    align-self: center;
+    margin-top: 18px;
+    color: rgb(16, 144, 135);
+}
+
+a:hover{
+    color:rgb(16, 187, 176)
+}
+ul{
+    margin-left: 15rem;
+}
+
+nav{
+    display: flex;
+    align-content: center;
+
+}
+
+.title{
+    color: rgb(16, 144, 135);
+    position: relative;
+    left: 28rem;
+    top: 10rem;
+    font-size: 3rem;
+}
+
+.sub-title{
+    color: rgb(16, 144, 135);
+    position: relative;
+    left: 30rem;
+    top: 10rem;
+    font-size: 1.5rem;
+}
+
+.circle1{
+    height: 20rem;
+    position: relative;
+    left: -3rem;
+    bottom: 3rem;
+}
+
+.circle2{
+    height: 20rem;
+    position: relative;
+    left: 33rem;
+    bottom: 2.8rem;
+}
+
+
+::-webkit-file-upload-button{
+    padding: 10px 10px;
+    color: white;
+    background: rgb(16, 144, 135);
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.name_s{
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.d-title{
+    color: rgb(16, 144, 135);
+    position: relative;
+    left: 35rem;
+    bottom: 15rem;
+    font-size: 3rem;
+}
+
+.confirm{
+    padding: 10px 15px;
+    color: white;
+    background: rgb(16, 144, 135);
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.get-started{
+    border: none;
+    outline: none;
+    background: rgb(225, 99, 99);
+    color: white;
+    border-radius: 10px;
+    padding: 8px 13px;
+    position: relative;
+    left: 38rem;
+    bottom: 7rem;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#toCheck{
+    width: 400px;
+    height: 100px;
+    font-size: 20px;
+    margin-left: 2rem;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    background-color: #fff;
+    margin: auto;
+    padding: 15px;
+    box-shadow: 0 2px 20px #0001, 0 1px 6px #0001;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+._table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+._table :is(th, td) {
+    border: 1px solid #0002;
+    padding: 8px 10px;
+}
+
+/* form field design start */
+.form_control {
+    border: 1px solid #0002;
+    background-color: transparent;
+    outline: none;
+    padding: 8px 12px;
+    font-family: 1.2rem;
+    width: 100%;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.3s ease-in-out;
+}
+
+.form_control::placeholder {
+    color: inherit;
+    opacity: 0.5;
+}
+
+.form_control:is(:focus, :hover) {
+    box-shadow: inset 0 1px 6px #0002;
+}
+
+/* form field design end */
+
+
+.success {
+    background-color: #24b96f !important;
+    border-radius: 10px;
+}
+
+.warning {
+    background-color: #ebba33 !important;
+}
+
+.primary {
+    background-color: #259dff !important;
+}
+
+.secondery {
+    background-color: #00bcd4 !important;
+}
+
+.danger {
+    background-color: #d31515 !important;
+    border-radius: 10px;
+    margin-left: 30px;
+}
+
+.action_container {
+    display: inline-flex;
+}
+
+.action_container>* {
+    border: none;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.action_container>*+* {
+    border-left: 1px solid #fff5;
+}
+
+.action_container>*:hover {
+    filter: hue-rotate(-20deg) brightness(0.97);
+    transform: scale(1.05);
+    border-color: transparent;
+    box-shadow: 0 2px 10px #0004;
+    border-radius: 2px;
+}
+
+.action_container>*:active {
+    transition: unset;
+    transform: scale(.95);
+}
